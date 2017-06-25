@@ -1,0 +1,55 @@
+<form class="form-horizontal">
+  <fieldset>
+    <legend>{{pageTitle + ': ' + product.name}}</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input class="form-control" id="name" placeholder="Product Name" type="text" value="{{product.name}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textArea">{{product.description}}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Image</label>
+      <div class="col-lg-10">
+        <img src="{{mainUrl}}{{product.imageFileLocation}}{{product.imageFileName}}" width="50%" height="30%" class="img-rounded">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">&nbsp;</label>
+      <div class="col-lg-5">
+        <table class='table' *ngIf='sizeprices && sizeprices.length'>
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let price of sizeprices'>
+              <td>{{price.sizeCode}}</td>
+              <td>{{price.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Date Created</label>
+      <div class="col-lg-4">{{product.dateCreated}}</div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default" (click)='onBack()'>Back</button>
+        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+      </div>
+    </div>
+  </fieldset>
+</form>

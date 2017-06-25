@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-sm-3 sidenav">
+    <br/><br/><br/>
+  </div>
+
+  <div class="col-sm-5 text-left">
+    <br/><br/><br/>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+      <fieldset>
+        <legend>Welcome</legend>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+          <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+          <input class="form-control" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" required type="email"
+            validate-email>
+            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+          <input class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required
+            type="password">
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+
+        <div class="form-group">
+          <div class="help-block" *ngIf='errorMessage'>{{errorMessage}}</div>
+          <button type="submit" class="btn btn-success">Login</button>
+          <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+          <!--<button type="reset" class="btn btn-default">Cancel</button>-->
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
